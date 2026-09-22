@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeCraft | Advanced Resume Builder</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-file-signature"></i>
+        <span>ResumeCraft</span>
+    </div>
+
+    <div class="nav-right">
+
+        <div class="save-status">
+            <span class="status-dot"></span>
+            Auto Saved
+        </div>
+
+        <button class="reset-btn" onclick="resetResume()">
+            <i class="fa-solid fa-rotate-left"></i>
+            Reset
+        </button>
+
+        <button class="download-btn" onclick="downloadResume()">
+            <i class="fa-solid fa-download"></i>
+            Download PDF
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="app-container">
+
+
+    <!-- =================================================
+         LEFT BUILDER
+    ================================================= -->
+
+    <aside class="builder-panel">
+
+        <!-- HEADER -->
+
+        <div class="builder-header">
+
+            <div class="eyebrow">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                Resume Builder
+            </div>
+
+            <div class="builder-title-row">
+
+                <div>
+                    <h1>Build Your Resume</h1>
+
+                    <p>
+                        Create your professional resume
+                        step by step.
+                    </p>
+                </div>
+
+                <div class="step-counter">
+                    <strong id="stepNumber">01</strong>
+                    <span>/ 06</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-area">
+
+            <div class="progress-info">
+
+                <span id="stepLabel">
+                    Personal Information
+                </span>
+
+                <span id="progressPercent">
+                    17%
+                </span>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div id="progressFill"
+                     class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP ICONS -->
+
+        <div class="step-indicators">
+
+            <button class="step-indicator active"
+                    onclick="goToStep(1)"
+                    title="Personal Information">
+
+                <i class="fa-solid fa-user"></i>
+
+            </button>
+
+            <button class="step-indicator"
+                    onclick="goToStep(2)"
+                    title="About Me">
+
+                <i class="fa-solid fa-user-pen"></i>
+
+            </button>
+
+            <button class="step-indicator"
+                    onclick="goToStep(3)"
+                    title="Experience">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+            </button>
+
+            <button class="step-indicator"
+                    onclick="goToStep(4)"
+                    title="Education">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </button>
+
+            <button class="step-indicator"
+                    onclick="goToStep(5)"
+                    title="Skills">
+
+                <i class="fa-solid fa-bolt"></i>
+
+            </button>
+
+            <button class="step-indicator"
+                    onclick="goToStep(6)"
+                    title="Languages">
+
+                <i class="fa-solid fa-language"></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             STEP 1
+        ================================================= -->
+
+        <section class="form-step active"
+                 data-step="1">
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon blue">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <h2>Personal Information</h2>
+
+                        <p>
+                            Tell us about yourself and your
+                            professional identity.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- PHOTO -->
+
+                <div class="photo-upload">
+
+                    <div class="photo-box">
+
+                        <img id="photoPreview"
+                             alt="Profile Photo">
+
+                        <i id="photoIcon"
+                           class="fa-solid fa-camera">
+                        </i>
+
+                    </div>
+
+                    <div class="photo-details">
+
+                        <label class="upload-btn">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            Upload Profile Photo
+
+                            <input type="file"
+                                   id="photoInput"
+                                   accept="image/*"
+                                   hidden>
+
+                        </label>
+
+                        <small>
+                            JPG, PNG • Maximum 2MB
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Ayush Raj">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Professional Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="jobTitle"
+                            placeholder="Frontend Developer">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="ayush@example.com">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            placeholder="+91 9876543210">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Website / Portfolio
+                        </label>
+
+                        <input
+                            type="text"
+                            id="website"
+                            placeholder="www.yourportfolio.com">
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            placeholder="Patna, India">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STEP 2
+        ================================================= -->
+
+        <section class="form-step"
+                 data-step="2">
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon purple">
+                        <i class="fa-solid fa-user-pen"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>About Me</h2>
+
+                        <p>
+                            Write a short professional summary
+                            that introduces you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="textarea-wrapper">
+
+                    <label>
+                        Professional Summary
+                    </label>
+
+                    <textarea
+                        id="about"
+                        rows="9"
+                        maxlength="800"
+                        placeholder="Example: Motivated frontend developer with a passion for creating responsive and user-friendly web applications using HTML, CSS and JavaScript..."></textarea>
+
+                    <div class="character-count">
+                        <span id="aboutCount">0</span>
+                        / 800
+                    </div>
+
+                </div>
+
+
+                <div class="tip-box">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <div>
+
+                        <strong>Quick Tip</strong>
+
+                        <p>
+                            Keep your summary clear, professional
+                            and focused on your skills and goals.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STEP 3
+        ================================================= -->
+
+        <section class="form-step"
+                 data-step="3">
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon orange">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>Work Experience</h2>
+
+                        <p>
+                            Add your professional experience,
+                            internships or projects.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="experienceContainer">
+                </div>
+
+
+                <button class="add-large-btn"
+                        onclick="addExperience()">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Experience
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STEP 4
+        ================================================= -->
+
+        <section class="form-step"
+                 data-step="4">
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon green">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>Education</h2>
+
+                        <p>
+                            Add your academic background
+                            and qualifications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="educationContainer">
+                </div>
+
+
+                <button class="add-large-btn"
+                        onclick="addEducation()">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Education
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STEP 5
+        ================================================= -->
+
+        <section class="form-step"
+                 data-step="5">
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon blue">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>Skills</h2>
+
+                        <p>
+                            Add the skills that represent
+                            your professional abilities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-input-row">
+
+                    <input
+                        type="text"
+                        id="skillInput"
+                        placeholder="e.g. JavaScript">
+
+                    <button onclick="addSkill()">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add
+
+                    </button>
+
+                </div>
+
+
+                <div id="skillsContainer"
+                     class="skills-editor">
+                </div>
+
+
+                <div class="tip-box">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <div>
+
+                        <strong>Recommended</strong>
+
+                        <p>
+                            Add technical and soft skills
+                            relevant to the job you're targeting.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STEP 6
+        ================================================= -->
+
+        <section class="form-step"
+                 data-step="6">
+
+            <div class="form-card">
+
+                <div class="card-heading">
+
+                    <div class="card-icon pink">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+
+                    <div>
+
+                        <h2>Languages</h2>
+
+                        <p>
+                            Add the languages you can communicate in.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="languagesContainer">
+                </div>
+
+
+                <button class="add-large-btn"
+                        onclick="addLanguage()">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Language
+
+                </button>
+
+            </div>
+
+
+            <!-- FINISH -->
+
+            <div class="complete-card">
+
+                <div class="complete-icon">
+
+                    <i class="fa-solid fa-check"></i>
+
+                </div>
+
+                <h2>Your Resume Is Ready!</h2>
+
+                <p>
+                    Review your resume on the right
+                    and download it when you're satisfied.
+                </p>
+
+                <button onclick="downloadResume()">
+
+                    <i class="fa-solid fa-download"></i>
+
+                    Download Resume
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================= -->
+
+        <div class="step-navigation">
+
+            <button id="backBtn"
+                    class="back-step"
+                    onclick="previousStep()">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back
+
+            </button>
+
+
+            <button id="nextBtn"
+                    class="next-step"
+                    onclick="nextStep()">
+
+                Next
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =================================================
+         RIGHT PREVIEW
+    ================================================= -->
+
+    <main class="preview-area">
+
+        <div class="preview-top">
+
+            <div>
+
+                <span class="preview-label">
+                    LIVE PREVIEW
+                </span>
+
+                <h2>Your Resume</h2>
+
+                <p>
+                    Changes appear instantly
+                </p>
+
+            </div>
+
+
+            <div class="template-switcher">
+
+                <button class="template-btn active"
+                        onclick="changeTemplate('green')">
+
+                    <span class="dot green-dot"></span>
+
+                    Emerald
+
+                </button>
+
+
+                <button class="template-btn"
+                        onclick="changeTemplate('blue')">
+
+                    <span class="dot blue-dot"></span>
+
+                    Royal Blue
+
+                </button>
+
+
+                <button class="template-btn"
+                        onclick="changeTemplate('gold')">
+
+                    <span class="dot gold-dot"></span>
+
+                    Charcoal Gold
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             RESUME
+        ================================================= -->
+
+        <div id="resume"
+             class="resume green">
+
+
+            <!-- SIDEBAR -->
+
+            <aside class="resume-sidebar">
+
+                <div class="resume-photo-container">
+
+                    <img id="resumePhoto"
+                         class="profile-photo"
+                         alt="Profile Photo">
+
+                    <div id="defaultPhoto"
+                         class="default-photo">
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+                </div>
+
+
+                <h1 id="resumeName">
+                    Your Name
+                </h1>
+
+
+                <div id="resumeJob"
+                     class="job-title">
+
+                    Your Job Title
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="resume-section">
+
+                    <h3 class="section-title">
+                        Contact
+                    </h3>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <span id="resumeEmail">
+                            email@example.com
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <span id="resumePhone">
+                            +91 0000000000
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-globe"></i>
+
+                        <span id="resumeWebsite">
+                            www.example.com
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <span id="resumeLocation">
+                            India
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                <div class="resume-section">
+
+                    <h3 class="section-title">
+                        Skills
+                    </h3>
+
+                    <div id="resumeSkills">
+                    </div>
+
+                </div>
+
+
+                <!-- LANGUAGES -->
+
+                <div class="resume-section">
+
+                    <h3 class="section-title">
+                        Languages
+                    </h3>
+
+                    <div id="resumeLanguages">
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- MAIN -->
+
+            <div class="resume-main">
+
+
+                <!-- PROFILE -->
+
+                <div class="resume-section">
+
+                    <h3 class="section-title">
+                        Profile
+                    </h3>
+
+                    <p id="resumeAbout"
+                       class="about-text">
+
+                        Your professional summary
+                        will appear here.
+
+                    </p>
+
+                </div>
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="resume-section">
+
+                    <h3 class="section-title">
+                        Experience
+                    </h3>
+
+                    <div id="resumeExperience">
+
+                        <div class="empty-resume">
+                            Add your experience.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EDUCATION -->
+
+                <div class="resume-section">
+
+                    <h3 class="section-title">
+                        Education
+                    </h3>
+
+                    <div id="resumeEducation">
+
+                        <div class="empty-resume">
+                            Add your education.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
